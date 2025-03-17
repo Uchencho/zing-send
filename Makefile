@@ -1,0 +1,19 @@
+-include .env
+
+KEY_NAME = zingKey
+SENDER_ADDRESS = 0xDdE95e58D3210174D7Cd6D8dC3D3e370C5a4b49A
+
+# Create a new private key
+createKey:
+	cast wallet new
+
+# To store the private key in a key store, we need to use the following command:
+storeKey:
+	cast wallet import $(KEY_NAME) --interactive
+
+deployContract:
+	forge script script/DeployZing.s.sol --rpc-url $(RPC_URL) --account $(KEY_NAME) --sender $(SENDER_ADDRESS) --broadcast
+
+deployContractOnSepolia:
+	forge script script/DeployZing.s.sol --rpc-url $(SEPOLIA_RPC_URL) \
+	--account $(KEY_NAME) --sender $(SENDER_ADDRESS) --broadcast
