@@ -15,6 +15,8 @@ contract HelperConfig is Script {
     constructor() {
         if (block.chainid == 11155111) {
             activeConfig = getSepoliaEthConfig();
+        } else if (block.chainid == 97) {
+            activeConfig = getTestnetBNBConfig();
         } else {
             activeConfig = getOrCreateAnvilETHConfig();
         }
@@ -26,6 +28,15 @@ contract HelperConfig is Script {
             usdcTokenAddress: 0xf08A50178dfcDe18524640EA6618a1f965821715,
             usdtTokenAddress: 0xA1d7f71cbBb361A77820279958BAC38fC3667c1a
             // minimumTokenAmount: 20000  // 0.02 USDC/USDT (6 decimals: 0.02 * 10^6)
+        });
+        return config;
+    }
+
+    function getTestnetBNBConfig() public pure returns (Config memory) {
+        Config memory config = Config({
+            minimumFundAmount: 0.001 ether,
+            usdcTokenAddress: 0x64544969ed7EBf5f083679233325356EbE738930,
+            usdtTokenAddress: 0x0Cae37DdBa67CE16a65e09AAeb33336B4195982b
         });
         return config;
     }
