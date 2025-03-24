@@ -17,3 +17,7 @@ deployContract:
 deployContractOnSepolia:
 	forge script script/DeployZing.s.sol --rpc-url $(SEPOLIA_RPC_URL) \
 	--account $(KEY_NAME) --sender $(SENDER_ADDRESS) --broadcast
+
+deployContractOnBNBTestnet:
+	forge script script/DeployZing.s.sol --rpc-url $(BNB_TESTNET_RPC_URL) \
+	--account $(KEY_NAME) --sender $(SENDER_ADDRESS) --broadcast
