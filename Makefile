@@ -11,6 +11,9 @@ createKey:
 storeKey:
 	cast wallet import $(KEY_NAME) --interactive
 
+viewKey:
+	cast wallet view $(KEY_NAME) --interactive
+
 deployContract:
 	forge script script/DeployZing.s.sol --rpc-url $(RPC_URL) --account $(KEY_NAME) --sender $(SENDER_ADDRESS) --broadcast
 
@@ -20,4 +23,8 @@ deployContractOnSepolia:
 
 deployContractOnBNBTestnet:
 	forge script script/DeployZing.s.sol --rpc-url $(BNB_TESTNET_RPC_URL) \
+	--account $(KEY_NAME) --sender $(SENDER_ADDRESS) --broadcast
+
+deployContractOnAvaxFuji:
+	forge script script/DeployZing.s.sol --rpc-url $(AVAX_FUJI_RPC_URL) \
 	--account $(KEY_NAME) --sender $(SENDER_ADDRESS) --broadcast
