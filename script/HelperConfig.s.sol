@@ -17,6 +17,8 @@ contract HelperConfig is Script {
             activeConfig = getSepoliaEthConfig();
         } else if (block.chainid == 97) {
             activeConfig = getTestnetBNBConfig();
+        } else if (block.chainid == 43113) {
+            activeConfig = getAvaxFujiConfig();
         } else {
             activeConfig = getOrCreateAnvilETHConfig();
         }
@@ -37,6 +39,15 @@ contract HelperConfig is Script {
             minimumFundAmount: 0.001 ether,
             usdcTokenAddress: 0x64544969ed7EBf5f083679233325356EbE738930,
             usdtTokenAddress: 0x0Cae37DdBa67CE16a65e09AAeb33336B4195982b
+        });
+        return config;
+    }
+
+    function getAvaxFujiConfig() public pure returns (Config memory) {
+        Config memory config = Config({
+            minimumFundAmount: 0.001 ether,
+            usdcTokenAddress: 0x5425890298aed601595a70AB815c96711a31Bc65,
+            usdtTokenAddress: 0x93669FAFA7a5E6F7Be425919410258C9380DFD32
         });
         return config;
     }
