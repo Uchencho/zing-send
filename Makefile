@@ -32,3 +32,7 @@ deployContractOnAvaxFuji:
 deployContractOnAvaxMainnet:
 	forge script script/DeployZing.s.sol --rpc-url $(AVAX_MAINNET_RPC_URL) \
 	--account $(KEY_NAME) --sender $(SENDER_ADDRESS) --broadcast
+
+deployContractOnArbitrumMainnet:
+	forge script script/DeployZing.s.sol --rpc-url $(ARB_MAINNET_RPC_URL) \
+	--account $(KEY_NAME) --sender $(SENDER_ADDRESS) --broadcast

@@ -21,6 +21,8 @@ contract HelperConfig is Script {
             activeConfig = getAvaxFujiConfig();
         } else if (block.chainid == 43114) {
             activeConfig = getAvaxMainnetConfig();
+        } else if (block.chainid == 42161) {
+            activeConfig = getARBMainnetConfig();
         } else {
             activeConfig = getOrCreateAnvilETHConfig();
         }
@@ -59,6 +61,15 @@ contract HelperConfig is Script {
             minimumFundAmount: 0.00001 ether,
             usdcTokenAddress: 0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E,
             usdtTokenAddress: 0x9702230A8Ea53601f5cD2dc00fDBc13d4dF4A8c7
+        });
+        return config;
+    }
+
+    function getARBMainnetConfig() public pure returns (Config memory) {
+        Config memory config = Config({
+            minimumFundAmount: 0.00001 ether,
+            usdcTokenAddress: 0xaf88d065e77c8cC2239327C5EDb3A432268e5831,
+            usdtTokenAddress: 0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9
         });
         return config;
     }
